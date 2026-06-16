@@ -1,0 +1,94 @@
+Institute_Name,Latitude,Longitude,State,Type
+Indian Institute of Technology Madras,12.9915,80.2337,Tamil Nadu,IIT
+Indian Institute of Technology Delhi,28.545,77.1926,Delhi,IIT
+Indian Institute of Technology Bombay,19.1332,72.9163,Maharashtra,IIT
+Indian Institute of Technology Kanpur,26.5123,80.2329,Uttar Pradesh,IIT
+Indian Institute of Technology Kharagpur,22.3197,87.2155,West Bengal,IIT
+Indian Institute of Technology Roorkee,29.8649,77.8967,Uttarakhand,IIT
+Indian Institute of Technology Guwahati,26.1867,91.6916,Assam,IIT
+Indian Institute of Technology Hyderabad,17.5929,78.1259,Telangana,IIT
+Indian Institute of Technology BHU,25.2625,82.9961,Uttar Pradesh,IIT
+Indian Institute of Technology Indore,22.5209,75.9207,Madhya Pradesh,IIT
+Indian Institute of Technology Dhanbad (ISM),23.8143,86.4412,Jharkhand,IIT
+Indian Institute of Technology Gandhinagar,23.2124,72.6841,Gujarat,IIT
+Indian Institute of Technology Ropar,30.9664,76.5331,Punjab,IIT
+Indian Institute of Technology Patna,25.5941,84.9371,Bihar,IIT
+Indian Institute of Technology Bhubaneswar,20.1481,85.6714,Odisha,IIT
+Indian Institute of Technology Mandi,31.777,76.9852,Himachal Pradesh,IIT
+Indian Institute of Technology Jodhpur,26.3473,73.1132,Rajasthan,IIT
+Indian Institute of Technology Tirupati,13.6301,79.4771,Andhra Pradesh,IIT
+Indian Institute of Technology Palakkad,10.8228,76.8041,Kerala,IIT
+Indian Institute of Technology Bhilai,21.1895,81.4428,Chhattisgarh,IIT
+Indian Institute of Technology Dharwad,15.4897,74.9213,Karnataka,IIT
+Indian Institute of Technology Jammu,32.8028,74.8966,Jammu & Kashmir,IIT
+Indian Institute of Technology Goa,15.4112,74.0253,Goa,IIT
+National Institute of Technology Trichy,10.7589,78.8131,Tamil Nadu,NIT
+National Institute of Technology Surathkal,13.0116,74.7925,Karnataka,NIT
+National Institute of Technology Rourkela,22.2531,84.9019,Odisha,NIT
+Motilal Nehru National Institute of Technology Allahabad,25.4919,81.8665,Uttar Pradesh,NIT
+National Institute of Technology Warangal,17.9869,79.53,Telangana,NIT
+National Institute of Technology Calicut,11.3223,75.9328,Kerala,NIT
+Visvesvaraya National Institute of Technology Nagpur,21.1218,79.0478,Maharashtra,NIT
+Malaviya National Institute of Technology Jaipur,26.8648,75.8398,Rajasthan,NIT
+National Institute of Technology Durgapur,23.5484,87.2931,West Bengal,NIT
+National Institute of Technology Kurukshetra,29.9482,76.8174,Haryana,NIT
+Maulana Azad National Institute of Technology Bhopal,23.2185,77.4079,Madhya Pradesh,NIT
+Sardar Vallabhbhai National Institute of Technology Surat,21.1645,72.7842,Gujarat,NIT
+National Institute of Technology Jalandhar,31.3961,75.5352,Punjab,NIT
+National Institute of Technology Jamshedpur,22.7752,86.1438,Jharkhand,NIT
+National Institute of Technology Patna,25.6206,85.1724,Bihar,NIT
+National Institute of Technology Raipur,21.2494,81.6053,Chhattisgarh,NIT
+National Institute of Technology Srinagar,34.1278,74.8393,Jammu & Kashmir,NIT
+National Institute of Technology Silchar,24.7554,92.7915,Assam,NIT
+National Institute of Technology Hamirpur,31.7107,76.5273,Himachal Pradesh,NIT
+National Institute of Technology Goa,15.3923,73.9782,Goa,NIT
+National Institute of Technology Agartala,23.8415,91.4258,Tripura,NIT
+National Institute of Technology Meghalaya,25.5788,91.8933,Meghalaya,NIT
+National Institute of Technology Manipur,24.8267,93.9317,Manipur,NIT
+National Institute of Technology Mizoram,23.7367,92.7142,Mizoram,NIT
+National Institute of Technology Nagaland,25.7951,93.7533,Nagaland,NIT
+National Institute of Technology Puducherry,10.9311,79.8248,Puducherry,NIT
+National Institute of Technology Sikkim,27.2982,88.3582,Sikkim,NIT
+National Institute of Technology Uttarakhand,30.2215,78.7847,Uttarakhand,NIT
+National Institute of Technology Andhra Pradesh,16.8206,81.5364,Andhra Pradesh,NIT
+National Institute of Technology Delhi,28.8427,77.1049,Delhi,NIT
+National Institute of Technology Arunachal Pradesh,27.1042,93.7143,Arunachal Pradesh,NIT
+Indian Institute of Engineering Science and Technology Shibpur,22.5552,88.3065,West Bengal,NIT
+Indian Institute of Information Technology Allahabad,25.43,81.7709,Uttar Pradesh,IIIT
+Atal Bihari Vajpayee Indian Institute of Information Technology and Management Gwalior,26.2495,78.1741,Madhya Pradesh,IIIT
+"Pandit Dwarka Prasad Mishra Indian Institute of Information Technology, Design and Manufacturing Jabalpur",23.1763,80.0252,Madhya Pradesh,IIIT
+"Indian Institute of Information Technology, Design and Manufacturing Kancheepuram",12.8392,80.1384,Tamil Nadu,IIIT
+"Indian Institute of Information Technology, Design and Manufacturing Kurnool",15.7617,78.0371,Andhra Pradesh,IIIT
+Indian Institute of Information Technology Sri City,13.5546,80.027,Andhra Pradesh,IIIT
+Indian Institute of Information Technology Guwahati,26.1554,91.6033,Assam,IIIT
+Indian Institute of Information Technology Vadodara,23.2384,72.6482,Gujarat,IIIT
+Indian Institute of Information Technology Kota,25.1481,75.8016,Rajasthan,IIIT
+Indian Institute of Information Technology Sonepat,28.9881,77.0194,Haryana,IIIT
+Indian Institute of Information Technology Una,31.4795,76.2415,Himachal Pradesh,IIIT
+Indian Institute of Information Technology Kalyani,22.9818,88.4552,West Bengal,IIIT
+Indian Institute of Information Technology Lucknow,26.8014,81.0238,Uttar Pradesh,IIIT
+Indian Institute of Information Technology Dharwad,15.5255,75.0239,Karnataka,IIIT
+Indian Institute of Information Technology Bhagalpur,25.2443,87.0142,Bihar,IIIT
+Indian Institute of Information Technology Bhopal,23.2104,77.4116,Madhya Pradesh,IIIT
+Indian Institute of Information Technology Kottayam,9.6582,76.6433,Kerala,IIIT
+Indian Institute of Information Technology Ranchi,23.3242,85.3183,Jharkhand,IIIT
+Indian Institute of Information Technology Nagpur,21.0315,79.0275,Maharashtra,IIIT
+Indian Institute of Information Technology Pune,18.6508,73.7628,Maharashtra,IIIT
+Indian Institute of Information Technology Surat,21.1642,72.7839,Gujarat,IIIT
+Indian Institute of Information Technology Agartala,23.8415,91.4258,Tripura,IIIT
+Indian Institute of Information Technology Manipur,24.8197,93.9472,Manipur,IIIT
+Indian Institute of Information Technology Raichur,16.2052,77.3328,Karnataka,IIIT
+Indian Institute of Information Technology Tiruchirappalli,10.7589,78.8131,Tamil Nadu,IIIT
+Birla Institute of Technology Mesra Ranchi,23.4123,85.4399,Jharkhand,GFTI
+Punjab Engineering College Chandigarh,30.7663,76.786,Chandigarh,GFTI
+Jawaharlal Nehru University Delhi,28.5398,77.1678,Delhi,GFTI
+University of Hyderabad,17.4616,78.324,Telangana,GFTI
+Institute of Chemical Technology Mumbai,19.0222,72.856,Maharashtra,GFTI
+Assam University Silchar,24.6937,92.7503,Assam,GFTI
+Tezpur University,26.7009,92.8305,Assam,GFTI
+Harcourt Butler Technical University Kanpur,26.4953,80.306,Uttar Pradesh,GFTI
+Birla Institute of Technology Sindri,23.6528,86.4697,Jharkhand,GFTI
+JK Institute Allahabad,25.4589,81.8604,Uttar Pradesh,GFTI
+School of Planning and Architecture Delhi,28.6315,77.2431,Delhi,GFTI
+School of Planning and Architecture Bhopal,23.21,77.3524,Madhya Pradesh,GFTI
+School of Planning and Architecture Vijayawada,16.5131,80.6055,Andhra Pradesh,GFTI
