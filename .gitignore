@@ -1,3 +1,5 @@
 venv/
 database/processed/
 database/cleaning_scripts/
+backend/node_modules/
+backend/.env
