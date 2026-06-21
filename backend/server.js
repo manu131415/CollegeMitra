@@ -37,7 +37,7 @@ app.get('/rank/:rank', async (req, res) => {
         const result = await pool.query(
             `SELECT *
              FROM jossa_ranks
-             WHERE closing_rank >= $1
+             WHERE closing_rank >= $1 AND opening_rank <= $1
              LIMIT 20`,
             [rank]
         );
