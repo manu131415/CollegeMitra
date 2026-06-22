@@ -3,3 +3,5 @@ database/processed/
 database/cleaning_scripts/
 backend/node_modules/
 backend/.env
+predictor-service/.env
+predictor-service/venv/
