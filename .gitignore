@@ -5,3 +5,4 @@ backend/node_modules/
 backend/.env
 predictor-service/.env
 predictor-service/venv/
+.env

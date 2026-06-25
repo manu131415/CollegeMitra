@@ -12,15 +12,23 @@ from scoring import (
     parse_nirf_rank,
 )
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db_pool()
     yield
     await close_db_pool()
 
-
 app = FastAPI(lifespan=lifespan)
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Vite's default dev port
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -52,6 +60,7 @@ async def predict(req: PredictRequest):
                 p.program_name,
                 j.quota,
                 j.seat_type,
+                j.opening_rank,
                 j.closing_rank,
                 j.year,
                 j.round
@@ -78,6 +87,8 @@ async def predict(req: PredictRequest):
             "branch": r["program_name"],
             "state": r["state"] or "Unknown",
             "nirf_rank": int(nirf_rank),
+            "opening_rank": r["opening_rank"],
+            "closing_rank": r["closing_rank"],
             "fee": float(r["annual_fees"] or 0),
             "median_package": float(r["median_package_lpa"] or 0),
             "distance_km": dist,
