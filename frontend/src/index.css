@@ -1,0 +1,539 @@
+/* ==========================================================================
+   College Predictor — Design System
+   Palette: cream paper + navy/gold "admission ticket" accent
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --cream: #f8f4ea;
+  --paper: #fffdf8;
+  --ink: #2a2823;
+  --ink-soft: #83796a;
+  --line: #e6dfcc;
+  --line-soft: #efe9d9;
+  --navy: #33415c;
+  --navy-soft: #4c5c7d;
+  --gold: #b8872f;
+  --gold-soft: #e7c883;
+  --sage: #62805f;
+  --red: #ad4a3f;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(42,40,35,0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 20px 80px;
+}
+
+/* ---------- Page header ---------- */
+
+.page-header {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.page-header .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-header .eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 10px 0 6px;
+  color: var(--ink);
+}
+
+.page-header p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ---------- Ticket / Form Card ---------- */
+
+.predictor-card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(42, 40, 35, 0.04), 0 12px 32px -18px rgba(42, 40, 35, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: card-in 0.6s var(--ease) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* perforated "ticket stub" divider, purely decorative signature element */
+.predictor-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 132px;
+  height: 0;
+  border-top: 1.5px dashed var(--line);
+  pointer-events: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-stub {
+  padding: 28px 32px 22px;
+}
+
+.form-body {
+  padding: 30px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.stub-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+/* ---------- Rank field: the "ticket number" ---------- */
+
+.rank-field {
+  position: relative;
+}
+
+.rank-field input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  padding: 0 0 4px;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.rank-field input::-webkit-outer-spin-button,
+.rank-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rank-field input::placeholder {
+  color: var(--line);
+  font-weight: 500;
+}
+
+.rank-field .underline {
+  position: relative;
+  height: 2px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rank-field .underline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+
+.rank-field:focus-within .underline::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Floating label text inputs ---------- */
+
+.field {
+  position: relative;
+}
+
+.field label {
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.2s var(--ease), color 0.2s var(--ease);
+  background: var(--paper);
+  padding: 0 4px;
+}
+
+.field input[type="text"] {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  padding: 13px 14px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.field input[type="text"]:focus {
+  border-color: var(--navy-soft);
+  box-shadow: 0 0 0 3px rgba(51, 65, 92, 0.1);
+}
+
+.field input[type="text"]:focus + label,
+.field.filled label {
+  transform: translateY(-21px) scale(0.82);
+  color: var(--navy);
+}
+
+/* ---------- Custom select (category) ---------- */
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap select {
+  width: 100%;
+  appearance: none;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  padding: 13px 40px 13px 14px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.select-wrap select:focus {
+  border-color: var(--navy-soft);
+  box-shadow: 0 0 0 3px rgba(51, 65, 92, 0.1);
+}
+
+.select-wrap .chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+  pointer-events: none;
+}
+
+.select-wrap select:focus ~ .chevron {
+  border-color: var(--navy);
+  transform: translateY(-40%) rotate(225deg);
+}
+
+/* ---------- Segmented sliding toggle ---------- */
+
+.segmented {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.segmented .thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  border-radius: 999px;
+  background: var(--navy);
+  box-shadow: 0 4px 10px -4px rgba(51, 65, 92, 0.5);
+  transition: transform 0.38s var(--ease);
+  z-index: 0;
+}
+
+.segmented button {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color 0.3s var(--ease);
+}
+
+.segmented button.active {
+  color: var(--paper);
+}
+
+.segmented button:hover:not(.active) {
+  color: var(--ink);
+}
+
+/* ---------- Submit button ---------- */
+
+.submit-btn {
+  position: relative;
+  margin-top: 6px;
+  border: none;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 15px 22px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+  box-shadow: 0 1px 2px rgba(42,40,35,0.06);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px -12px rgba(51, 65, 92, 0.55);
+  background: var(--navy-soft);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.submit-btn .spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 253, 248, 0.35);
+  border-top-color: var(--paper);
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: -2px;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(173, 74, 63, 0.08);
+  border: 1px solid rgba(173, 74, 63, 0.25);
+  color: var(--red);
+  font-size: 13.5px;
+  animation: shake 0.4s var(--ease);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* ---------- Results table ---------- */
+
+.results-wrap {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 28px;
+}
+
+.results-wrap .stub-label {
+  margin-bottom: 10px;
+}
+
+.results-table-scroll {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(42, 40, 35, 0.04);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--cream);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--line-soft);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: row-in 0.45s var(--ease) forwards;
+  transition: background 0.2s var(--ease);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--cream);
+}
+
+@keyframes row-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.02s; }
+tbody tr:nth-child(2) { animation-delay: 0.06s; }
+tbody tr:nth-child(3) { animation-delay: 0.10s; }
+tbody tr:nth-child(4) { animation-delay: 0.14s; }
+tbody tr:nth-child(5) { animation-delay: 0.18s; }
+tbody tr:nth-child(6) { animation-delay: 0.22s; }
+tbody tr:nth-child(7) { animation-delay: 0.26s; }
+tbody tr:nth-child(8) { animation-delay: 0.30s; }
+tbody tr:nth-child(n+9) { animation-delay: 0.32s; }
+
+td {
+  padding: 12px 14px;
+  color: var(--ink);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+td:first-child {
+  font-weight: 600;
+  white-space: normal;
+}
+
+.rank-cell {
+  font-family: var(--font-mono);
+  color: var(--ink-soft);
+}
+
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  background: rgba(98, 128, 95, 0.12);
+  color: var(--sage);
+}
+
+.empty-state {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .form-stub { padding: 24px 20px 20px; }
+  .form-body { padding: 24px 20px 28px; }
+  .rank-field input { font-size: 32px; }
+  .page-header h1 { font-size: 27px; }
+}

@@ -1,6 +1,73 @@
 import { useState } from "react";
 import { getPrediction } from "../api/predictor";
 
+const CATEGORY_OPTIONS = [
+  { value: "OPEN", label: "Open (General)" },
+  { value: "EWS", label: "EWS" },
+  { value: "OBC-NCL", label: "OBC-NCL" },
+  { value: "SC", label: "SC" },
+  { value: "ST", label: "ST" },
+  { value: "OPEN (PwD)", label: "Open (PwD)" },
+  { value: "EWS (PwD)", label: "EWS (PwD)" },
+  { value: "OBC-NCL (PwD)", label: "OBC-NCL (PwD)" },
+  { value: "SC (PwD)", label: "SC (PwD)" },
+  { value: "ST (PwD)", label: "ST (PwD)" },
+];
+
+const EXAM_OPTIONS = [
+  { value: "jee_main", label: "JEE Main" },
+  { value: "jee_adv", label: "JEE Advanced" },
+];
+
+const PREFERENCE_OPTIONS = [
+  { value: "best", label: "Best" },
+  { value: "near_home", label: "Near Home" },
+];
+
+/**
+ * A sliding-pill segmented control. The highlighted "thumb" animates
+ * between options instead of jumping, so a toggle always reads as motion
+ * rather than a state swap.
+ */
+function SegmentedToggle({ options, value, onChange, name }) {
+  const activeIndex = Math.max(
+    0,
+    options.findIndex((o) => o.value === value)
+  );
+
+  return (
+    <div
+      className="segmented"
+      style={{ gridTemplateColumns: `repeat(${options.length}, 1fr)` }}
+      role="radiogroup"
+      aria-label={name}
+    >
+      <div
+        className="thumb"
+        style={{
+          width: `calc((100% - 8px) / ${options.length})`,
+          transform: `translateX(calc(${activeIndex} * (100% + ${
+            2 / options.length
+          }px)))`,
+        }}
+        aria-hidden="true"
+      />
+      {options.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          role="radio"
+          aria-checked={value === opt.value}
+          className={value === opt.value ? "active" : ""}
+          onClick={() => onChange(opt.value)}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function PredictorForm({ onResults }) {
   const [formData, setFormData] = useState({
     rank: "",
@@ -18,10 +85,8 @@ function PredictorForm({ onResults }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleBranchChange = (e) => {
-    const options = Array.from(e.target.selectedOptions).map((o) => o.value);
-    setFormData((prev) => ({ ...prev, branch_preference: options }));
-  };
+  const setField = (name) => (value) =>
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,66 +109,93 @@ function PredictorForm({ onResults }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="rank"
-        type="number"
-        placeholder="JEE Rank"
-        value={formData.rank}
-        onChange={handleChange}
-        required
-      />
+    <div className="predictor-card">
+      <form onSubmit={handleSubmit}>
+        <div className="form-stub">
+          <p className="stub-label">Rank Entry</p>
+          <div className="rank-field">
+            <input
+              name="rank"
+              type="number"
+              placeholder="000000"
+              value={formData.rank}
+              onChange={handleChange}
+              required
+            />
+            <div className="underline" />
+          </div>
+        </div>
 
-      <select name="category" value={formData.category} onChange={handleChange} required>
-  <option value="">Select Category</option>
-  <option value="OPEN">Open (General)</option>
-  <option value="EWS">EWS</option>
-  <option value="OBC-NCL">OBC-NCL</option>
-  <option value="SC">SC</option>
-  <option value="ST">ST</option>
-  <option value="OPEN (PwD)">Open (PwD)</option>
-  <option value="EWS (PwD)">EWS (PwD)</option>
-  <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
-  <option value="SC (PwD)">SC (PwD)</option>
-  <option value="ST (PwD)">ST (PwD)</option>
-</select>
+        <div className="form-body">
+          <div>
+            <p className="stub-label">Category</p>
+            <div className="select-wrap">
+              <select name="category" value={formData.category} onChange={handleChange} required>
+                <option value="">Select category</option>
+                {CATEGORY_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+              <span className="chevron" />
+            </div>
+          </div>
 
-      <input
-        name="home_state"
-        placeholder="Home State"
-        value={formData.home_state}
-        onChange={handleChange}
-        required
-      />
+          <div className={`field ${formData.home_state ? "filled" : ""}`}>
+            <input
+              id="home_state"
+              name="home_state"
+              type="text"
+              value={formData.home_state}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="home_state">Home State</label>
+          </div>
 
-      <select name="exam" value={formData.exam} onChange={handleChange} required>
-  <option value="jee_main">JEE Main</option>
-  <option value="jee_adv">JEE Advanced</option>
-</select>
+          <div>
+            <p className="stub-label">Exam</p>
+            <SegmentedToggle
+              name="exam"
+              options={EXAM_OPTIONS}
+              value={formData.exam}
+              onChange={setField("exam")}
+            />
+          </div>
 
-<select name="preference" value={formData.preference} onChange={handleChange} required>
-  <option value="best">Best</option>
-  <option value="near_home">Near Home</option>
-</select>
+          <div>
+            <p className="stub-label">Preference</p>
+            <SegmentedToggle
+              name="preference"
+              options={PREFERENCE_OPTIONS}
+              value={formData.preference}
+              onChange={setField("preference")}
+            />
+          </div>
 
-      {/* <select
-        name="branch_preference"
-        multiple
-        value={formData.branch_preference}
-        onChange={handleBranchChange}
-      >
-        <option value="CSE">CSE</option>
-        <option value="CSE">AI</option>
-        <option value="ECE">ECE</option>
-        <option value="ME">Mechanical</option>
-        <option value="CE">Civil</option>
-      </select> */}
+          {/* <select
+            name="branch_preference"
+            multiple
+            value={formData.branch_preference}
+            onChange={handleBranchChange}
+          >
+            <option value="CSE">CSE</option>
+            <option value="CSE">AI</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">Mechanical</option>
+            <option value="CE">Civil</option>
+          </select> */}
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Predicting..." : "Predict Colleges"}
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading && <span className="spinner" />}
+            {loading ? "Predicting…" : "Predict Colleges"}
+          </button>
+
+          {error && <p className="error-msg">{error}</p>}
+        </div>
+      </form>
+    </div>
   );
 }
 
